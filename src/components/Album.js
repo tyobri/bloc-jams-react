@@ -10,7 +10,7 @@ class Album extends Component {
 	});
 
 	this.state = {
-		albm: album
+		album: album
 	};
 }
 
@@ -19,7 +19,7 @@ class Album extends Component {
 			<section className="album">
 				
 				<section id="album-info">
-					<img id="album-cover-art" src={this.state.album.albumCover} />
+					<img id="album-cover-art" src={this.state.album.albumCover} alt="album artwork" />
 					<div className="album-details">	
 						<h1 id="album-title">{this.state.album.title}</h1>
 						<h2 className="artist">{this.state.album.artist}</h2>
@@ -34,7 +34,7 @@ class Album extends Component {
 						<col id="song-duration-column" />
 					</colgroup>
 					<tbody>
-					
+
 					</tbody>
 				</table>	
 
