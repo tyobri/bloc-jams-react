@@ -88,6 +88,21 @@ class Album extends Component {
 		this.setState({ currentTime: newTime });
 	}
 
+	handleVolumeChange(e) {
+    	const newVolume = e.target.value;
+    	this.audioElement.volume = newVolume;
+    	this.setState({ currentVolume:newVolume })
+    }
+
+    formatTime(time) {
+    	const minutes = Math.floor( time / 60 ); // answer to division problem
+    	const seconds = Math.floor( time % 60 );  // what's leftover after I divide 
+    	if ( seconds < 10 ) {
+      		return minutes + ":" + 0 + seconds;
+    		}
+    		return minutes + ":" + seconds;
+		}
+
 	render() {
 		return (
 			<section className="album">
@@ -128,11 +143,16 @@ class Album extends Component {
 					isPlaying={this.state.isPlaying}
 					currentSong={this.state.currentSong}
 					currentTime={this.audioElement.currentTime}
-					duration={this.audioElement.currentTime}
+					duration={this.audioElement.duration}
 					handleSongClick={() => this.handleSongClick(this.state.currentSong)}
 				 	handlePrevClick={() => this.handlePrevClick()}
 				 	handleNextClick={() => this.handleNextClick()}
 				 	handleTimeChange={(e) => this.handleTimeChange(e)}
+				 	handleVolumeChange={(e) => this.handleVolumeChange(e)}
+				 	handleFormatTime={(e) => this.handleFormatTime(e)}
+				 	volume={this.state.currentVolume}
+				 	audio={this.audioElement.volume}
+				 	formatTime={this.formatTime}
 				 />
 				 
 			</section>
