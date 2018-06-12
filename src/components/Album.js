@@ -1,6 +1,22 @@
 import React, { Component } from 'react';
 import albumData from './../data/albums';
 import PlayerBar from './PlayerBar.js';
+import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+
+const styles = {
+  card: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+  },
+};
 
 class Album extends Component {
 	constructor(props) {
@@ -105,16 +121,23 @@ class Album extends Component {
 
 	render() {
 		return (
-			<section className="album">
-				
-				<section id="album-info">
-					<img id="album-cover-art" src={this.state.album.albumCover} alt="album artwork" />
+		<div>
+			<Card className="album">
+
+				<CardContent id="album-info">
+
+				  <CardMedia 
+					className="album-cover-art" 
+					image="/../public/assets/images/album_covers/01.jpg"
+					title="album artwork" 
+				  />
+
 					<div className="album-details">	
 						<h1 id="album-title">{this.state.album.title}</h1>
 						<h2 className="artist">{this.state.album.artist}</h2>
 						<div id="release-info">{this.state.album.releaseInfo}</div>
 					</div>
-				</section>
+				</CardContent>
 				
 				<table id="song-list">
 					<colgroup>
@@ -134,7 +157,7 @@ class Album extends Component {
 										</button>
 									</td>
 									<td className="song-title">{song.title}</td>
-									<td className="song-duration">{song.duration}</td>
+									<td className="song-duration">{this.formatTime(song.duration)}</td>
 								</tr>
 								)}
 					</tbody>
@@ -155,7 +178,8 @@ class Album extends Component {
 				 	formatTime={this.formatTime}
 				 />
 				 
-			</section>
+			</Card>
+		</div>
 			);
 	}
 }
