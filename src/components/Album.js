@@ -1,22 +1,7 @@
 import React, { Component } from 'react';
 import albumData from './../data/albums';
 import PlayerBar from './PlayerBar.js';
-import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 
-const styles = {
-  card: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
-};
 
 class Album extends Component {
 	constructor(props) {
@@ -121,48 +106,23 @@ class Album extends Component {
 
 	render() {
 		return (
-		<div>
-			<Card className="album">
+			<div>
+			<section className="album">
 
-				<CardContent id="album-info">
+				<section id="album-info">
 
-				  <CardMedia 
-					className="album-cover-art" 
-					image="/../public/assets/images/album_covers/01.jpg"
-					title="album artwork" 
-				  />
+				  <img id="album-cover-art" src={this.state.album.albumCover} alt={this.state.album.title} />
 
 					<div className="album-details">	
 						<h1 id="album-title">{this.state.album.title}</h1>
 						<h2 className="artist">{this.state.album.artist}</h2>
 						<div id="release-info">{this.state.album.releaseInfo}</div>
 					</div>
-				</CardContent>
-				
-				<table id="song-list">
-					<colgroup>
-						<col id="song-number-column" />
-						<col id="song-title-column" />
-						<col id="song-duration-column" />
-					</colgroup>	
+				</section>
 
-					<tbody>
-							{this.state.album.songs.map( (song, index) =>
-								<tr className='song' key={index} onClick={() => this.handleSongClick(song)} >
-									<td className="song-actions">
-										<button>
-											<span className="song-number">{index + 1}</span>
-											<span className="ion-play"></span>
-											<span className="ion-pause"></span>
-										</button>
-									</td>
-									<td className="song-title">{song.title}</td>
-									<td className="song-duration">{this.formatTime(song.duration)}</td>
-								</tr>
-								)}
-					</tbody>
-				</table>
-				<PlayerBar 
+				<section className="bottom-controls">
+
+				<PlayerBar
 					isPlaying={this.state.isPlaying}
 					currentSong={this.state.currentSong}
 					currentTime={this.audioElement.currentTime}
@@ -177,9 +137,36 @@ class Album extends Component {
 				 	audio={this.audioElement.volume}
 				 	formatTime={this.formatTime}
 				 />
-				 
-			</Card>
-		</div>
+
+				 <table id="song-list">
+					<colgroup>
+						<col id="song-number-column" />
+						<col id="song-title-column" />
+						<col id="song-duration-column" />
+					</colgroup>	
+
+					<tbody>
+							{this.state.album.songs.map( (song, index) =>
+								<tr className='song' key={index} onClick={() => this.handleSongClick(song)} >
+									<td className="song-number">{index + 1}. </td>	
+									<td className="song-title">{song.title}</td>
+									<td className="song-duration">{this.formatTime(song.duration)}</td>
+									<td className="song-actions">
+									<button id="pause">
+											<span className="ion-play"></span>
+											<span className="ion-pause"></span>
+									</button>
+									</td>
+								</tr>
+								)}
+					</tbody>
+				</table>
+
+
+				 </section>
+
+				 </section>
+				</div>
 			);
 	}
 }

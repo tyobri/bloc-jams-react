@@ -1,5 +1,80 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: Roboto;
+  font-weight: 400;
+  
+}
+
+/* Album CSS */
+
+.album{
+ 	margin: auto;
+ 	width: 50%;
+ 	background-color: rgba(50, 50, 50, 0.1);
+ 	width: 600px;
+ 	border: 2px solid #323232;
+ 	border-radius: 20px;
+}
+
+#album-cover-art{
+	margin-top: 20px;
+	width:300px;
+	border-radius: 15px;
+}
+
+#album-title{
+	color: rgba(0, 0, 0, 0.87);
+    font-size: 1.5rem;
+}
+
+.artist{
+	color: rgba(0, 0, 0, 0.87);
+    font-size: 1.2rem;
+}
+
+#release-info{
+	padding-bottom: 20px;
+	font-style: italic;
+}
+
+#song-list{
+	margin: auto;
+ 	width: 50%;
+	color: #ffffff;
+	padding: 35px;
+}
+
+#buttons{
+	padding: 20px;
+}
+
+.bottom-controls{
+	clear: both;
+	background-color: #323232;
+	border-radius: 0px 0px 15px 15px;
+}
+
+
+/* PlayerBar CSS */
+
+#time-control{
+	color: #ffffff;
+	float: left;
+	padding-left:100px;
+}
+
+.current-time{
+	color:#f50;
+}
+
+#volume-control{
+	color: #ffffff;
+	float: right;
+	padding-right: 100px;
+}
+
+#pause{
+	background-color:#f50;
+	border-radius:5px;
 }
